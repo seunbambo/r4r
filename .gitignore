@@ -1,0 +1,24 @@
+**/.env
+node_modules/
+.expo/
+dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+packages/api
+packages/client
+
+# macOS
+.DS_Store
+
+# Logs
+**/yarn-debug.log*
+**/yarn-error.log*
+**/data/postgres/
+**/.DS_Store
+package-lock.json

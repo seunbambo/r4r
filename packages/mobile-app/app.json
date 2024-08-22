@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "Racing for Recovery",
+    "slug": "racingForRecovery",
+    "version": "2.1.1",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": ["@bugsnag/plugin-expo-eas-sourcemaps"]
+  }
+}

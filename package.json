@@ -1,0 +1,51 @@
+{
+  "name": "racing-for-recovery-monorepo",
+  "version": "1.0.0",
+  "engines": {
+    "node": "16.x"
+  },
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/**",
+      "**/react-native",
+      "**/react-native/**",
+      "**/react",
+      "**/react-dom"
+    ]
+  },
+  "scripts": {
+    "api": "yarn workspace api",
+    "app": "yarn workspace mobile-app",
+    "client": "yarn workspace client",
+    "client:dev": "yarn && yarn client dev",
+    "api:reset": "yarn && yarn api reset",
+    "api:seed": "yarn && yarn api seed",
+    "api:dev:android": "yarn && yarn api develop:android",
+    "api:dev:ios": "yarn && yarn api develop:ios",
+    "api:start:staging": "yarn && yarn api start:staging",
+    "lint:all": "yarn api lint && yarn app lint",
+    "lint:all:fix": "yarn lint:api:fix && yarn lint:app:fix",
+    "mobile-app": "yarn && yarn workspace mobile-app start",
+    "mobile-app:android": "yarn && yarn app android",
+    "mobile-app:ios": "yarn && yarn app ios ",
+    "mobile-app:ios:bugsnag": "yarn && yarn app ios:bugsnag",
+    "mobile-app:android:bugsnag": "yarn && yarn app android:bugsnag",
+    "format:app": "yarn app format",
+    "lint:app": "yarn app lint",
+    "lint:app:fix": "yarn app lint:fix",
+    "lint:api": "yarn api lint",
+    "lint:api:fix": "yarn api lint:fix",
+    "clear-caches": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && yarn cache clean && yarn && watchman watch-del-all && rm -fr $TMPDIR/metro-cache && rm $TMPDIR/haste-map-*",
+    "postinstall": "if [ $CLIENT_ENV ]; then yarn postinstall-client; elif [ $API_ENV ]; then yarn postinstall-api; else echo no environment detected, please set CLIENT_ENV or API_ENV; fi",
+    "postinstall-client": "cd packages/client && yarn && yarn build",
+    "postinstall-api": "cd packages/api && yarn && yarn build"
+  },
+  "private": true,
+  "engines": {
+    "node": "16.x"
+  }
+}
